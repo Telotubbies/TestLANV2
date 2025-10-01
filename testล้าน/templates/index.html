@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Print AI Detect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>3D Print Detection</h1>
+
+  <!-- Card Container -->
+  <div id="card-container" class="grid">
+    {% for d in detections %}
+    <div class="card">
+      <div class="card-top">Status: {{ d.status }}</div>
+      <div class="card-middle">
+        <img src="{{ url_for('uploaded_file', filename=d.filename) }}" alt="result">
+      </div>
+      <div class="card-bottom">
+        <p>Confidence: {{ d.confidence }}</p>
+        <p>Time: {{ d.timestamp }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- ปุ่ม + -->
+  <button id="add-btn">+</button>
+
+  <!-- Popup Upload -->
+  <div id="upload-popup" class="popup hidden">
+    <h2>Upload Image</h2>
+    <input type="file" id="file-input">
+    <button id="upload-btn">Upload</button>
+    <button onclick="closePopup('upload-popup')">Close</button>
+  </div>
+
+  <!-- Popup API -->
+  <div id="api-popup" class="popup hidden">
+    <h2>Real-time Camera (API)</h2>
+    <p>TODO: connect Raspberry Pi camera stream every 2s</p>
+    <button onclick="closePopup('api-popup')">Close</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
