@@ -1,3 +1,13 @@
-flask
+# Web
+Flask==3.0.3
+python-dotenv==1.0.1
+Pillow>=10.0
+
+# DB
+SQLAlchemy==2.0.36
+psycopg2-binary==2.9.9
+
+# AI
 ultralytics
 torch --index-url https://download.pytorch.org/whl/cpu
+opencv-python>=4.8
